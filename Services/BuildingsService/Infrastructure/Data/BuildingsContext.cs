@@ -33,6 +33,10 @@ public class BuildingsContext(DbContextOptions<BuildingsContext> options) : DbCo
             entity.Property(e => e.Type)
                 .HasMaxLength(20)
                 .HasColumnName("type");
+            entity.Property(e => e.Geometry)
+                .IsRequired()
+                .HasColumnType("geometry")
+                .HasColumnName("geometry");
         });
 
     }

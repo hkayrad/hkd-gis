@@ -21,4 +21,8 @@
     <Folder Include="Buildings\Queries\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\SharedKernel\SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>
