@@ -1,7 +1,6 @@
 using System;
 using BuildingsService.Infrastructure.Data;
 using BuildingsService.Infrastructure.Repositories;
-using HKD.GIS.SharedKernel.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BuildingsService.Infrastructure;
@@ -9,12 +8,12 @@ namespace BuildingsService.Infrastructure;
 public class UnitOfWork(BuildingsContext context) : IUnitOfWork
 {
     private readonly BuildingsContext _context = context ?? throw new ArgumentNullException(nameof(context));
-    private BuildingRepository? _buildingsRepository;
+    private IBuildingRepository? _buildingsRepository;
 
     private IDbContextTransaction? _transaction;
     private bool _disposed = false;
 
-    public BuildingRepository BuildingsRepository
+    public IBuildingRepository BuildingsRepository
     {
         get
         {
