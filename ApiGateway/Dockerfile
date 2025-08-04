@@ -9,8 +9,6 @@ RUN dotnet restore "ApiGateway/ApiGateway.csproj"
 COPY . .
 WORKDIR "/src/ApiGateway"
 
-RUN dotnet build "ApiGateway.csproj" -c Release -o /app/build
-
 RUN dotnet publish "ApiGateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final

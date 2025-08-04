@@ -10,8 +10,6 @@ RUN dotnet restore "Services/BuildingsService/BuildingsService.csproj"
 COPY . .
 WORKDIR "/src/Services/BuildingsService"
 
-RUN dotnet build "BuildingsService.csproj" -c Release -o /app/build
-
 RUN dotnet publish "BuildingsService.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
