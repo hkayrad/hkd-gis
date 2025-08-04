@@ -1,18 +1,42 @@
-using System;
-using System.ComponentModel.DataAnnotations;
+using BuildingsService.Domain;
+using BuildingsService.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BuildingsService.Infrastructure.Repositories;
 
 public class BuildingRepository : IBuildingRepository
 {
-    [MaxLength(12)]
-    public string? OsmId { get; set; }
-    [MaxLength(4)]
-    public int Code { get; set; }
-    [MaxLength(28)]
-    public string? FClass { get; set; }
-    [MaxLength(100)]
-    public string? Name { get; set; }
-    [MaxLength(20)]
-    public string? Type { get; set; }
+    private readonly BuildingsContext _context;
+    private readonly DbSet<Building> _buildings;
+
+    public BuildingRepository(BuildingsContext context)
+    {
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _buildings = _context.Set<Building>();
+    }
+
+    public async Task<List<Building>> GetBuildingsAsync(CancellationToken cancellationToken,
+                                                        int pageNumber,
+                                                        int pageSize,
+                                                        string sortBy, 
+                                                        bool ascending)
+    {
+        var queryable = _buildings.AsQueryable();
+
+        if (ascending)
+        {
+            queryable = queryable.OrderBy(e => EF.Property<object>(e, sortBy));
+        }
+        else
+        {
+            queryable = queryable.OrderByDescending(e => EF.Property<object>(e, sortBy));
+        }
+
+        Console.WriteLine($"Fetching buildings: Page {pageNumber}, Size {pageSize}, Sort By {sortBy}, Ascending {ascending}");
+
+        return await queryable
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
+    }
 }

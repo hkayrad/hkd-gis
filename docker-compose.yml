@@ -1,13 +1,28 @@
 services:
+  auth_database:
+    image: postgres:17
+    container_name: auth_database
+    ports:
+      - "6000:5432"
+    environment:
+      - POSTGRES_DB=${AUTH_DB_NAME}
+      - POSTGRES_USER=${AUTH_DB_USER}
+      - POSTGRES_PASSWORD=${AUTH_DB_PASS}
+    volumes:
+      - auth_data:/var/lib/postgresql/data
+    networks:
+      - gis_db_connection
+    restart: unless-stopped
+
   buildings_database:
     image: postgis/postgis:17-master
     container_name: buildings_database
     ports:
-      - "6000:5432"
+      - "6001:5432"
     environment:
-      - POSTGRES_DB=buildings_db
-      - POSTGRES_USER=buildings_user
-      - POSTGRES_PASSWORD=buildings_pass
+      - POSTGRES_DB=${BUILDINGS_DB_NAME}
+      - POSTGRES_USER=${BUILDINGS_DB_USER}
+      - POSTGRES_PASSWORD=${BUILDINGS_DB_PASS}
     volumes:
       - buildings_data:/var/lib/postgresql/data
     networks:
@@ -18,28 +33,13 @@ services:
     image: postgis/postgis:17-master
     container_name: poi_database
     ports:
-      - "6001:5432"
-    environment:
-      - POSTGRES_DB=poi_db
-      - POSTGRES_USER=poi_user
-      - POSTGRES_PASSWORD=poi_pass
-    volumes:
-      - poi_data:/var/lib/postgresql/data
-    networks:
-      - gis_db_connection
-    restart: unless-stopped
-
-  auth_database:
-    image: postgres:17
-    container_name: auth_database
-    ports:
       - "6002:5432"
     environment:
-      - POSTGRES_DB=auth_db
-      - POSTGRES_USER=auth_user
-      - POSTGRES_PASSWORD=auth_pass
+      - POSTGRES_DB=${POI_DB_NAME}
+      - POSTGRES_USER=${POI_DB_USER}
+      - POSTGRES_PASSWORD=${POI_DB_PASS}
     volumes:
-      - auth_data:/var/lib/postgresql/data
+      - poi_data:/var/lib/postgresql/data
     networks:
       - gis_db_connection
     restart: unless-stopped
