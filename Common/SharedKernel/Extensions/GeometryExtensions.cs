@@ -2,7 +2,7 @@ using System;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
-namespace HKS.GIS.SharedKernel.Extensions;
+namespace HKD.GIS.SharedKernel.Extensions;
 
 public static class GeometryExtensions
 {

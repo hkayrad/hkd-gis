@@ -1,11 +1,12 @@
 using System;
 using BuildingsService.Domain;
+using HKD.GIS.SharedKernel.Domain;
 
 namespace BuildingsService.Infrastructure.Services;
 
-public class PostgresqlBuildingsService(IUnitOfWork unitOfWork) : IBuildingsService
+public class PostgresqlBuildingsService(UnitOfWork unitOfWork) : IBuildingsService
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly UnitOfWork _unitOfWork = unitOfWork;
 
     public async Task<Response<List<Building>>> GetBuildingsAsync(CancellationToken cancellationToken,
                                                                 int? pageNumber,

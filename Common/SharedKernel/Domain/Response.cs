@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace BuildingsService.Domain;
+namespace HKD.GIS.SharedKernel.Domain;
 
 public class Response<T>
 {

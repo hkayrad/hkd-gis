@@ -1,5 +1,6 @@
 using System;
 using BuildingsService.Domain;
+using HKD.GIS.SharedKernel.Domain;
 
 namespace BuildingsService.Infrastructure.Services;
 

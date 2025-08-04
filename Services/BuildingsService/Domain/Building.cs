@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using NetTopologySuite.Geometries;
-using HKS.GIS.SharedKernel.Extensions;
+using HKD.GIS.SharedKernel.Extensions;
 
 namespace BuildingsService.Domain;
 

@@ -1,7 +1,6 @@
 using BuildingsService.Domain;
-using BuildingsService.Infrastructure;
 using BuildingsService.Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
+using HKD.GIS.SharedKernel.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildingsService.Controllers

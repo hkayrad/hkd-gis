@@ -1,12 +1,9 @@
 using System;
-using BuildingsService.Infrastructure.Repositories;
 
-namespace BuildingsService.Infrastructure;
+namespace HKD.GIS.SharedKernel.Infrastructure;
 
 public interface IUnitOfWork
 {
-    BuildingRepository BuildingsRepository { get; }
-
     Task SaveChangesAsync();
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();

@@ -1,6 +1,7 @@
 using System;
 using BuildingsService.Infrastructure.Data;
 using BuildingsService.Infrastructure.Repositories;
+using HKD.GIS.SharedKernel.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BuildingsService.Infrastructure;
