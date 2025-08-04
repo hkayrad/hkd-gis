@@ -1,37 +1,18 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/buildings/{everything}",
+      "DownstreamPathTemplate": "/buildings/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
-        { "Host": "localhost", "Port": 5001 }
+        {
+          "Host": "buildings_service",
+          "Port": 8080
+        }
       ],
-      "UpstreamPathTemplate": "/buildings/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
-    },
-    {
-      "DownstreamPathTemplate": "/api/poi/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        { "Host": "localhost", "Port": 5002 }
-      ],
-      "UpstreamPathTemplate": "/poi/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
-    },
-    {
-      "DownstreamPathTemplate": "/api/auth/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        { "Host": "localhost", "Port": 5003 }
-      ],
-      "UpstreamPathTemplate": "/auth/{everything}",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamPathTemplate": "/api/buildings/{everything}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
     }
   ],
   "GlobalConfiguration": {
