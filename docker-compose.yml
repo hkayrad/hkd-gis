@@ -44,6 +44,22 @@ services:
       - gis_db_connection
     restart: unless-stopped
 
+  buildings_service:
+    build:
+      context: .
+      dockerfile: Services/BuildingsService/Dockerfile
+    container_name: buildings_service
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - BUILDINGS_POSTGRESQL_CONNECTION_STRING=Host=buildings_database;Database=${BUILDINGS_DB_NAME};Username=${BUILDINGS_DB_USER};Password=${BUILDINGS_DB_PASS}
+    depends_on:
+      - buildings_database
+    networks:
+      - gis_db_connection
+    restart: unless-stopped
+
 networks:
   gis_db_connection:
     driver: bridge
