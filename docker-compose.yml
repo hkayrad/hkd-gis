@@ -1,0 +1,54 @@
+services:
+  buildings_database:
+    image: postgis/postgis:17-master
+    container_name: buildings_database
+    ports:
+      - "6000:5432"
+    environment:
+      - POSTGRES_DB=buildings_db
+      - POSTGRES_USER=buildings_user
+      - POSTGRES_PASSWORD=buildings_pass
+    volumes:
+      - buildings_data:/var/lib/postgresql/data
+    networks:
+      - gis_db_connection
+    restart: unless-stopped
+
+  poi_database:
+    image: postgis/postgis:17-master
+    container_name: poi_database
+    ports:
+      - "6001:5432"
+    environment:
+      - POSTGRES_DB=poi_db
+      - POSTGRES_USER=poi_user
+      - POSTGRES_PASSWORD=poi_pass
+    volumes:
+      - poi_data:/var/lib/postgresql/data
+    networks:
+      - gis_db_connection
+    restart: unless-stopped
+
+  auth_database:
+    image: postgres:17
+    container_name: auth_database
+    ports:
+      - "6002:5432"
+    environment:
+      - POSTGRES_DB=auth_db
+      - POSTGRES_USER=auth_user
+      - POSTGRES_PASSWORD=auth_pass
+    volumes:
+      - auth_data:/var/lib/postgresql/data
+    networks:
+      - gis_db_connection
+    restart: unless-stopped
+
+networks:
+  gis_db_connection:
+    driver: bridge
+
+volumes:
+  buildings_data:
+  poi_data:
+  auth_data:
