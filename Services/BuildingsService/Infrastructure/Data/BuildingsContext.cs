@@ -37,6 +37,12 @@ public class BuildingsContext(DbContextOptions<BuildingsContext> options) : DbCo
                 .IsRequired()
                 .HasColumnType("geometry")
                 .HasColumnName("geometry");
+            entity.Property(e => e.GeoJson)
+                .HasComputedColumnSql("ST_AsGeoJSON(geometry)")
+                .HasColumnName("geojson");
+            entity.Property(e => e.Wkt)
+                .HasComputedColumnSql("ST_AsText(geometry)")
+                .HasColumnName("wkt");
         });
 
     }

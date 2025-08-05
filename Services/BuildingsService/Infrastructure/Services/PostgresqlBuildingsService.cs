@@ -14,7 +14,7 @@ public class PostgresqlBuildingsService(IUnitOfWork unitOfWork) : IBuildingsServ
                                                                 string? sortBy,
                                                                 bool? ascending)
     {
-        var buildings = await _unitOfWork.BuildingsRepository.GetBuildingsAsync(cancellationToken, pageNumber ?? 1, pageSize ?? 1000, sortBy ?? "Id", ascending ?? true);
+        var buildings = await _unitOfWork.BuildingsRepository.GetBuildingsAsync(cancellationToken, pageNumber ?? 1, pageSize ?? 100000, sortBy ?? "Id", ascending ?? true);
 
         if (buildings == null || buildings.Count == 0)
             return Response<List<Building>>.Failure("No buildings found.");

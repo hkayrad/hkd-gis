@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using NetTopologySuite.Geometries;
-using HKD.GIS.SharedKernel.Extensions;
 
 namespace BuildingsService.Domain;
 
@@ -23,7 +22,6 @@ public class Building
     public string? Type { get; set; }
     [JsonIgnore]
     public Geometry? Geometry { get; set; }
-
-    [JsonPropertyName("wkt")]
-    public string? Wkt => Geometry?.ToWkt();
+    public string? Wkt { get; set; }
+    public string? GeoJson { get; set; }
 }

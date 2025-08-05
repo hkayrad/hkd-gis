@@ -18,25 +18,17 @@ public class BuildingRepository : IBuildingRepository
     public async Task<List<Building>> GetBuildingsAsync(CancellationToken cancellationToken,
                                                         int pageNumber,
                                                         int pageSize,
-                                                        string sortBy, 
+                                                        string sortBy,
                                                         bool ascending)
     {
-        var queryable = _buildings.AsQueryable();
-
-        if (ascending)
-        {
-            queryable = queryable.OrderBy(e => EF.Property<object>(e, sortBy));
-        }
-        else
-        {
-            queryable = queryable.OrderByDescending(e => EF.Property<object>(e, sortBy));
-        }
-
-        Console.WriteLine($"Fetching buildings: Page {pageNumber}, Size {pageSize}, Sort By {sortBy}, Ascending {ascending}");
-
-        return await queryable
+        var buildings = await _context.Buildings
+            .FromSql($"SELECT *, ST_AsText(geometry) as wkt, ST_AsGeoJSON(geometry) as geojson FROM buildings")
+            .OrderBy(b => EF.Property<object>(b, sortBy))
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);
+
+        return buildings;
+
     }
 }
