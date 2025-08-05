@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "a5lYjwZYW0A=",
+  "dgSpecHash": "NLLSk6JXCko=",
   "success": true,
   "projectFilePath": "C:\\Dev\\Repos\\dotnet\\hkd-gis\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,7 @@
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\9.0.4\\microsoft.aspnetcore.jsonpatch.9.0.4.nupkg.sha512",
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.middlewareanalysis\\9.0.4\\microsoft.aspnetcore.middlewareanalysis.9.0.4.nupkg.sha512",
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\9.0.4\\microsoft.aspnetcore.mvc.newtonsoftjson.9.0.4.nupkg.sha512",
-    "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.7\\microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
+    "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.4\\microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.extensions.diagnosticadapter\\3.1.32\\microsoft.extensions.diagnosticadapter.3.1.32.nupkg.sha512",

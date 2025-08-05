@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tQcmimBMbbA=",
+  "dgSpecHash": "1FuX1XBmiSQ=",
   "success": true,
   "projectFilePath": "C:\\Dev\\Repos\\dotnet\\hkd-gis\\Services\\AuthService\\AuthService.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.7\\microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
+    "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
     "C:\\Users\\hkayr\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
   ],
   "logs": []
