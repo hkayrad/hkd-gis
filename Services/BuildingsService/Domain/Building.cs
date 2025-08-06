@@ -22,6 +22,5 @@ public class Building
     public string? Type { get; set; }
     [JsonIgnore]
     public Geometry? Geometry { get; set; }
-    public string? Wkt { get; set; }
     public string? GeoJson { get; set; }
 }
