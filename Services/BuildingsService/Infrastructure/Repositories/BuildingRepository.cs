@@ -23,7 +23,7 @@ public class BuildingRepository : IBuildingRepository
     {
         var buildings = await _context.Buildings
             .FromSql($"SELECT *, ST_AsGeoJSON(geometry) as geojson FROM buildings")
-            .OrderBy(b => EF.Property<object>(b, sortBy))
+            .OrderBy(x => EF.Property<object>(x, sortBy))
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);

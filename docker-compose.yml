@@ -45,19 +45,31 @@ services:
     restart: unless-stopped
 
   api_gateway:
-    build:
-      context: .
-      dockerfile: ApiGateway/Dockerfile
+    image: caddy_gateway:latest
     container_name: api_gateway
-    ports:
-      - "80:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    depends_on:
-      - buildings_service
     networks:
       - api_gateway_network
+    ports:
+      - "443:443"
+      - "80:80"
+    depends_on:
+      - buildings_service
+    volumes:
+      - ./CaddyGateway/Caddyfile:/etc/caddy/Caddyfile
     restart: unless-stopped
+    # build:
+    #   context: .
+    #   dockerfile: ApiGateway/Dockerfile
+    # container_name: api_gateway
+    # ports:
+    #   - "80:8080"
+    # environment:
+    #   - ASPNETCORE_ENVIRONMENT=Development
+    # depends_on:
+    #   - buildings_service
+    # networks:
+    #   - api_gateway_network
+    # restart: unless-stopped
 
   buildings_service:
     build:
